@@ -1,54 +1,41 @@
 package org.example.gof.behavior;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Setter;
 
 //Алгоритм стратегии может быть изменен во время выполнения программы.
 // Позволяет переключаться между алгоритмами или стратегиями в зависимости от ситуации.
 public class StrategyPattern {
     public static void main(String[] args) {
-        ShoppingCart cart = new ShoppingCart();
-
-        cart.setPaymentStrategy(new CreditCardPaymentStrategy("1234-5678-9012-3456", "12/24", "123"));
-        cart.checkout(100);
-
-        cart.setPaymentStrategy(new PayPalPaymentStrategy("example@example.com", "password123"));
-        cart.checkout(200);
+        Strategy strategy = new Strategy(new BubbleSort());
+        strategy.sort();
+        strategy.setSort(new InsertionSort());
+        strategy.sort();
     }
 }
 
-@Setter
-class ShoppingCart {
-    private PaymentStrategy paymentStrategy;
-
-    public void checkout(int amount) {
-        paymentStrategy.pay(amount);
+interface Sort {
+    default void sort() {
+        System.out.println(this.getClass().getSimpleName() + " is sorting");
     }
 }
 
-interface PaymentStrategy {
-    void pay(int amount);
+class BubbleSort implements Sort {
 }
 
-@AllArgsConstructor
-class CreditCardPaymentStrategy implements PaymentStrategy {
-    private String cardNumber;
-    private String expiryDate;
-    private String cvv;
+class InsertionSort implements Sort {
+}
 
-    @Override
-    public void pay(int amount) {
-        System.out.println(amount + " paid with credit card.");
+@Data
+class Strategy {
+    Sort sort;
+
+    Strategy(Sort sort) {
+        this.sort = sort;
     }
-}
 
-@AllArgsConstructor
-class PayPalPaymentStrategy implements PaymentStrategy {
-    private String email;
-    private String password;
-
-    @Override
-    public void pay(int amount) {
-        System.out.println(amount + " paid with PayPal.");
+    public void sort() {
+        sort.sort();
     }
 }
