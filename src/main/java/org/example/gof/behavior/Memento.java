@@ -1,8 +1,6 @@
 package org.example.gof.behavior;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.LinkedList;
 

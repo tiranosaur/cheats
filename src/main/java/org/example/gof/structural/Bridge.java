@@ -1,7 +1,6 @@
 package org.example.gof.structural;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 //Шаблон мост — это предпочтение композиции над наследованием. Детали реализации передаются из одной иерархии в другой объект с отдельной иерархией.
 public class Bridge {

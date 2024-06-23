@@ -1,8 +1,5 @@
 package org.example.gof.structural;
 
-import org.example.model.Product;
-import org.example.model.SecondProduct;
-
 // Шаблон позволяет обернуть несовместимые объекты в адаптер, чтобы сделать их совместимыми с другим классом
 /*
 Adapter (Адаптер) - применяется при необходимости использовать классы вместе с несвязанными интерфейсами.

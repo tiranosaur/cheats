@@ -1,7 +1,6 @@
 package org.example.gof.structural;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import lombok.experimental.UtilityClass;
 
 import java.util.HashMap;

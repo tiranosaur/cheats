@@ -1,5 +1,7 @@
 package org.example.gof.behavior;
 
+import lombok.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,7 @@ interface Subject {
     void notifyObservers();
 }
 
+@Getter
 class WeatherStation implements Subject {
     private List<Observer> observers = new ArrayList<>();
     private float temperature;
@@ -74,9 +77,5 @@ class WeatherStation implements Subject {
     public void setTemperature(float temperature) {
         this.temperature = temperature;
         notifyObservers();
-    }
-
-    public float getTemperature() {
-        return temperature;
     }
 }

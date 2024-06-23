@@ -1,7 +1,6 @@
 package org.example.gof.creational;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 public class Prototype {
     public static void main(String[] args) throws CloneNotSupportedException {

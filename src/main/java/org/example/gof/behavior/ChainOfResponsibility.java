@@ -1,7 +1,6 @@
 package org.example.gof.behavior;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 
 //Цепочка обязанностей (Chain of Responsibility) - цепочка обязанностей помогает строить цепочки объектов.
 //	Запрос входит с одного конца и проходит через каждый объект, пока не найдет подходящий обработчик. Один абстрактный объект. Несколько его обработчиков.
@@ -21,14 +20,10 @@ interface Step {
     void execute();
 }
 
+@AllArgsConstructor
 class StepImpl implements Step {
-    private final Step step;
     private final String type;
-
-    public StepImpl(String type, Step step) {
-        this.step = step;
-        this.type = type;
-    }
+    private final Step step;
 
     @Override
     public void execute() {

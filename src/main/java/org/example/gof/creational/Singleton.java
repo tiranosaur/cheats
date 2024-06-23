@@ -1,5 +1,7 @@
 package org.example.gof.creational;
 
+import lombok.*;
+
 public class Singleton {
     public static void main(String[] args) {
         System.out.println(SimpliestSingleton.instance.equals(SimpliestSingleton.instance));
@@ -10,20 +12,10 @@ public class Singleton {
     }
 }
 
+@Getter
 enum SimpliestSingleton {
     instance;
     private String level;
-    SimpliestSingleton() {
-        // ctor
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
 }
 
 class SimpleSingleton {

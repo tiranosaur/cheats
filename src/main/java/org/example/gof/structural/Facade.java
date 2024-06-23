@@ -1,6 +1,6 @@
 package org.example.gof.structural;
 
-import lombok.AllArgsConstructor;
+import lombok.*;
 import org.example.model.Product;
 import org.example.model.ThirdProduct;
 
