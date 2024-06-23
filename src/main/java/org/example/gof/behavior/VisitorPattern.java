@@ -1,39 +1,43 @@
 package org.example.gof.behavior;
 
-// Шаблон посетитель позволяет добавлять будущие операции для объектов без их модифицирования. расширяет интерфейс
+// позволяет добавлять новые операции к объектам без изменения этих объектов.
 public class VisitorPattern {
     public static void main(String[] args) {
-        ConcreteVisitor visitor = new ConcreteVisitor();
+        Visitor areaVisitor = new AreaVisitor();
+        Shape rectangle = new Rectangle();
+        rectangle.accept(areaVisitor);
+        Shape circle = new Circle();
+        circle.accept(areaVisitor);
+    }
+}
 
-        ElementA elementA = new ElementA();
+interface Shape {
+    void accept(Visitor visitor);
+}
 
-        elementA.accept(visitor);
+class Rectangle implements Shape {
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+}
+
+class Circle implements Shape {
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }
 
 interface Visitor {
-    void visit(ElementA elementA);
+    void visit(Rectangle rectangle);
+    void visit(Circle circle);
 }
 
-class ConcreteVisitor implements Visitor {
-    @Override
-    public void visit(ElementA elementA) {
-        elementA.operationA();
-    }
-}
-
-
-interface Visitable {
-    void accept(Visitor visitor);
-}
-
-class ElementA implements Visitable {
-    @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+class AreaVisitor implements Visitor {
+    public void visit(Rectangle rectangle) {
+        System.out.println("Rectangle visit");
     }
 
-    void operationA() {
-        System.out.println("Performing operation A on Element A");
+    public void visit(Circle circle) {
+        System.out.println("Circle visit");
     }
 }
