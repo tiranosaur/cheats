@@ -1,50 +1,44 @@
 package org.example.gof.structural;
 
-import org.example.model.Product;
-import org.example.model.SecondProduct;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 //Шаблон мост — это предпочтение композиции над наследованием. Детали реализации передаются из одной иерархии в другой объект с отдельной иерархией.
 public class Bridge {
     public static void main(String[] args) {
-        Product product = new SecondProduct("second bridge");
-        Color color = new Red();
-        ColoredProduct coloredProduct = new ColoredProduct(color, product);
-
-        coloredProduct.print();
-    }
-}
-
-abstract class ProductWithColor {
-    protected Color color;
-
-    public ProductWithColor(Color color) {
-        this.color = color;
-    }
-
-    abstract void print();
-}
-
-class ColoredProduct extends ProductWithColor {
-    private final Product product;
-
-    public ColoredProduct(Color color, Product product) {
-        super(color);
-        this.product = product;
-    }
-
-    @Override
-    void print() {
-        color.printColor();
-        product.printName();
+        ColoredCircle coloredCircle1 = new ColoredCircle(new Red());
+        coloredCircle1.draw();
+        ColoredCircle coloredCircle2 = new ColoredCircle(new Green());
+        coloredCircle2.draw();
     }
 }
 
 interface Color {
-    void printColor();
+    default String getColor() {
+        return this.getClass().getSimpleName();
+    }
 }
 
 class Red implements Color {
-    public void printColor() {
-        System.out.println("Red");
+}
+
+class Green implements Color {
+}
+
+
+@Data
+abstract class ColoredShape {
+    private String color;
+
+    abstract void draw();
+}
+
+@AllArgsConstructor
+class ColoredCircle extends ColoredShape {
+    private Color color;
+
+    @Override
+    void draw() {
+        System.out.println("This circle is " + color.getColor());
     }
 }
