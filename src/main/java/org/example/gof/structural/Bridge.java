@@ -48,9 +48,3 @@ class Red implements Color {
         System.out.println("Red");
     }
 }
-
-class Green implements Color {
-    public void printColor() {
-        System.out.println("Green");
-    }
-}
