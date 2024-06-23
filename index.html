@@ -64,6 +64,7 @@
 
         iframe {
             width: 100%;
+            height: 40em;
         }
     </style>
 </head>
@@ -95,7 +96,7 @@
                         <p class="example"> ${info.example}</p>
                         <p class="explain">${info.explain}</p>
                         <a href="${info.java}" target="_blank">JAVA</a>
-                         <iframe src="${info.java}" type="text/plain"></iframe>
+                        <iframe src="${info.java}"></iframe>
                     </div>
                 `
             }
@@ -247,7 +248,7 @@
                     "explain": "Объединяет объекты в древовидную структуру для представления иерархии от частного к целому.",
                     "example": "Организация с сотрудниками, имеющими общие свойства.",
                     "simple": "Позволяет работать с индивидуальными объектами в едином стиле.",
-                    "java": "src/main/java/org/example/gof/structural/Composite.java"
+                    "java": "src/main/java/org/example/gof/structural/CompositePattern.java"
                 },
                 {
                     "name": "Декоратор (Decorator)",
