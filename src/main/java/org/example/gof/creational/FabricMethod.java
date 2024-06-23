@@ -1,20 +1,20 @@
 package org.example.gof.creational;
 
 import org.example.model.FirstProduct;
-import org.example.model.Product;
+import org.example.model.Machine;
 import org.example.model.SecondProduct;
 
 // Фабричный метод редоставляет способ делегирования логики создания экземпляра дочерним классам.
 public class FabricMethod {
     public static void main(String[] args) {
         Creator creator1 = new FirstProductCreator();
-        Product firstProduct = creator1.createProduct();
-        firstProduct.printName();
+        Machine firstMachine = creator1.createProduct();
+        firstMachine.printName();
     }
 }
 
 interface Creator {
-    Product createProduct();
+    Machine createProduct();
 }
 
 class FirstProductCreator implements Creator {

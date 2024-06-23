@@ -1,54 +1,35 @@
 package org.example.gof.structural;
 
-import org.example.model.Product;
-import org.example.model.SecondProduct;
+import lombok.AllArgsConstructor;
 
 // Используя шаблон заместитель, класс отображает функциональность другого класса.
 public class Proxy {
     public static void main(String[] args) {
-        Product product = new SecondProduct();
-        ProxyProduct proxyProduct = new ProxyProduct(product);
-        proxyProduct.setName("xxx");
-
-        System.out.println(proxyProduct.getName());
-        proxyProduct.printName();
+        Machine machine = new Machine();
+        MachineProxy proxy = new MachineProxy(machine);
+        proxy.printName();
     }
 }
 
-class ProxyProduct implements Product {
-    private final Product product;
-
-    public ProxyProduct(Product product) {
-        this.product = product;
+class Machine {
+    public void printName() {
     }
+
+    public void scream() {
+    }
+}
+
+@AllArgsConstructor
+class MachineProxy extends Machine {
+    private final Machine machine;
 
     @Override
     public void printName() {
-        product.printName();
+        machine.printName();
     }
 
     @Override
-    public String getName() {
-        return product.getName();
-    }
-
-    @Override
-    public void setName(String name) {
-        product.setName(name);
-    }
-
-    @Override
-    public void printClassName() {
-
-    }
-
-    @Override
-    public void startProcess() {
-
-    }
-
-    @Override
-    public void endProcess() {
-
+    public void scream() {
+        machine.scream();
     }
 }

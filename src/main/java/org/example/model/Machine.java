@@ -1,6 +1,6 @@
 package org.example.model;
 
-public interface Product {
+public interface Machine {
     String getName();
 
     void setName(String name);

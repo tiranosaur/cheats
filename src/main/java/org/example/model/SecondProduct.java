@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SecondProduct implements Product {
+public class SecondProduct implements Machine {
     private String name;
 
     public void printName() {

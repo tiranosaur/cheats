@@ -1,7 +1,7 @@
 package org.example.gof.structural;
 
 import lombok.*;
-import org.example.model.Product;
+import org.example.model.Machine;
 import org.example.model.ThirdProduct;
 
 //Фасад предоставляет упрощенный интерфейс для сложной системы. Несколько действий над объектом в одном методе
@@ -15,15 +15,15 @@ public class Facade {
 
 @AllArgsConstructor
 class ProductFacade {
-    private Product product;
+    private Machine machine;
 
     public void turnOn() {
-        product.printName();
-        product.startProcess();
+        machine.printName();
+        machine.startProcess();
     }
 
     public void turnOff() {
-        product.printClassName();
-        product.endProcess();
+        machine.printClassName();
+        machine.endProcess();
     }
 }

@@ -22,7 +22,7 @@ interface ProductA {
 }
 
 class ConcreteProductA1 implements ProductA {
-    public String creator;
+    public final String creator;
 
     public ConcreteProductA1(String creator) {
         this.creator = creator;
@@ -35,7 +35,7 @@ class ConcreteProductA1 implements ProductA {
 }
 
 class ConcreteProductA2 implements ProductA {
-    public String creator;
+    public final String creator;
 
     public ConcreteProductA2(String creator) {
         this.creator = creator;
@@ -52,7 +52,7 @@ interface ProductB {
 }
 
 class ConcreteProductB1 implements ProductB {
-    public String creator;
+    public final String creator;
 
     public ConcreteProductB1(String creator) {
         this.creator = creator;
@@ -65,7 +65,7 @@ class ConcreteProductB1 implements ProductB {
 }
 
 class ConcreteProductB2 implements ProductB {
-    public String creator;
+    public final String creator;
 
     public ConcreteProductB2(String creator) {
         this.creator = creator;

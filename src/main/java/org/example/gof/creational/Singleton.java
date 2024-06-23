@@ -28,7 +28,7 @@ class SynchronizedSingleton {
     private SynchronizedSingleton() {
     }
 
-    public synchronized static SynchronizedSingleton getInstance() {
+    public static synchronized SynchronizedSingleton getInstance() {
         if (instance == null) {
             instance = new SynchronizedSingleton();
         }
@@ -37,7 +37,7 @@ class SynchronizedSingleton {
 }
 
 class DoubleCheckedSingleton {
-    private volatile static DoubleCheckedSingleton instance;
+    private static volatile DoubleCheckedSingleton instance;
 
     private DoubleCheckedSingleton() {
     }
