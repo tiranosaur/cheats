@@ -27,8 +27,6 @@ class Green implements Color {
 
 @Data
 abstract class ColoredShape {
-    private String color;
-
     abstract void draw();
 }
 
