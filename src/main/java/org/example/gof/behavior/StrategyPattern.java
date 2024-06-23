@@ -1,8 +1,6 @@
 package org.example.gof.behavior;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Setter;
 
 //Алгоритм стратегии может быть изменен во время выполнения программы.
 // Позволяет переключаться между алгоритмами или стратегиями в зависимости от ситуации.
