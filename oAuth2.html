@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>oAuth2</title>
+    <style>
+        .content {
+            margin-left: 20%;
+            width: 80%;
+            font-size: 16px;
+        }
+
+        pre, .code {
+            background: black;
+            color: white;
+            width: fit-content;
+            padding: 4px 15px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        h4 {
+            margin: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .content {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div>
+        <h2>Основные понятия</h2>
+        <ul>
+            <li>
+                <b>Resource Owner (Владелец ресурса):</b> Пользователь, который владеет защищенными ресурсами.
+            </li>
+            <li>
+                <b>Client (Клиент):</b> Приложение, которое хочет получить доступ к ресурсам.
+            </li>
+            <li>
+                <b>Authorization Server (Сервер авторизации):</b> Сервис, который отвечает за аутентификацию
+                пользователя и выдачу токенов доступа.
+            </li>
+            <li>
+                <b>Resource Server (Сервер ресурсов):</b> Сервис, который хранит защищенные ресурсы и принимает токены
+                доступа для предоставления этих ресурсов.
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h2>Основные шаги</h2>
+        <ol>
+            <li>
+                <b>Запрос авторизации:</b>
+                <ul>
+                    <li>
+                        Клиент направляет пользователя на сервер авторизации с запросом на получение
+                        разрешения (authorization request).
+                        <p class="code">
+                            GET
+                            /authorize?response_type=code&client_id=CLIENT_ID&redirect_uri=REDIRECT_URI&scope=read&state=STATE
+                        </p>
+                    </li>
+                </ul>
+
+            </li>
+            <li>
+                <b>Получение разрешения:</b>
+                <ul>
+                    <li>
+                        Пользователь аутентифицируется на сервере авторизации и дает согласие на предоставление доступа
+                        клиенту.
+                    </li>
+                    <li>
+                        Сервер авторизации перенаправляет пользователя обратно на клиент с авторизационным кодом.
+                        <p class="code">
+                            HTTP/1.1 302 Found <br>
+                            Location: REDIRECT_URI?code=AUTHORIZATION_CODE&state=STATE
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <b>Получение токена доступа:</b>
+                <ul>
+                    <li>
+                        Клиент отправляет запрос на сервер авторизации с авторизационным кодом для обмена его на токен
+                        доступа.
+                        <p class="code">
+                            POST /token
+                            <br>
+                            Content-Type: application/x-www-form-urlencoded
+                            <br>
+                            <br>
+                            grant_type=authorization_code&code=AUTHORIZATION_CODE&redirect_uri=REDIRECT_URI&client_id=CLIENT_ID&client_secret=CLIENT_SECRET
+                            <br>
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <b>Получение токена доступа:</b>
+                <ul>
+                    <li>
+                        Сервер авторизации проверяет авторизационный код и выдает токен доступа.
+                        <pre>
+{
+   "access_token": "ACCESS_TOKEN",
+   "token_type": "Bearer",
+   "expires_in": 3600,
+   "refresh_token": "REFRESH_TOKEN",
+   "scope": "read"
+}</pre>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <b>Доступ к ресурсам:</b>
+                <ul>
+                    <li>
+                        Клиент использует токен доступа для доступа к защищенным ресурсам на сервере ресурсов.
+                        <p class="code">
+                            GET /resource <br>
+                            Authorization: Bearer ACCESS_TOKEN
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <b>Обновление токена:</b>
+                <ul>
+                    <li>
+                        Когда токен доступа истекает, клиент может использовать токен обновления (refresh token) для
+                        получения нового токена доступа.
+                        <p class="code">
+                            GET /resource <br>
+                            Authorization: Bearer ACCESS_TOKEN
+                        </p>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <h3>Поток авторизации (Authorization Code Grant)</h3>
+        <br>
+        Это наиболее часто используемый поток и описан выше. Он применяется для серверных приложений, где клиент
+        может надежно хранить секреты.
+
+        <h3>Упрощенный поток (Implicit Grant)</h3>
+        <br>
+        Этот поток используется для клиентских приложений (например, SPA), где невозможно безопасно хранить секреты.
+        В этом потоке токен доступа выдается напрямую, без промежуточного шага с авторизационным кодом.
+
+        <h3>Поток учётных данных (Resource Owner Password Credentials Grant)</h3>
+        <br>
+        Этот поток используется только тогда, когда у клиента есть высокое доверие к владельцу ресурса и он может
+        безопасно хранить учетные данные.
+
+        <h3>Поток клиентских учётных данных (Client Credentials Grant)</h3>
+        <br>
+        Этот поток используется для серверных приложений, когда клиент сам является владельцем ресурса и не требуется
+        вовлечение пользователя.
+
+
+    </div>
+</div>
+</body>
+</html>
