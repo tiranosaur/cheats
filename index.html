@@ -69,13 +69,6 @@
             margin: 10px 10px;
             color: #3b4b21;
         }
-
-        iframe {
-            width: 100%;
-            height: 40em;
-        }
-
-
     </style>
 </head>
 <body>
@@ -86,6 +79,7 @@
     <h3><a href="body.png" target="_blank">HTTP body</a></h3>
     <h3><a href="oAuth2.html" target="_blank">oAuth2</a></h3>
     <h3><a href="async.html" target="_blank">Async</a></h3>
+    <h3><a href="golang/index.html" target="_blank">GOLANG</a></h3>
     <hr>
     <div class="content"><img src="sql.jpg"></div>
     <div class="content"><img src="async_executor.jpg"></div>
@@ -95,6 +89,7 @@
     $(document).ready(function () {
         fill();
         $('.accordeon .acc-head').on('click', accClick);
+        $('.accordeon .acc-body').on('click', accClick);
     });
 
     function accClick() {

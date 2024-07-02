@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Golang</title>
+    <script src="../jquery.js"></script>
+    <style>
+        h4 {
+            text-align: center;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .accordeon {
+            border: 10px solid #fff;
+            box-shadow: 0 0 10px grey;
+            margin: 5px;
+            margin-bottom: 10px
+        }
+
+        .acc-head {
+            font-size: 12px;
+            text-align: center;
+            padding: 5px 5px;
+            background: rgba(192, 192, 192, 0.37);
+            cursor: pointer;
+            border: 1px solid white;
+        }
+
+        .acc-body {
+            padding: 5px;
+            margin-bottom: 2px;
+            display: none;
+            width: 60%;
+            margin-left: 20%;
+        }
+
+        .content {
+            margin-left: 20%;
+        }
+
+        @media (max-width: 768px) {
+            .acc-body {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .content {
+                width: 100%;
+            }
+        }
+
+        .question {
+            font-size: 20px;
+            margin: 10px 10px;
+            color: #770707;
+        }
+
+        iframe {
+            width: 100%;
+            height: 40em;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="accordeon">
+        <div>
+            <div class="acc-head">МАССИВЫ</div>
+            <div class="acc-body">
+                <ul>
+                    <li>
+                        <p class="question">Создание массива</p>
+                        <img src="array/create.png" alt="">
+                    </li>
+                    <hr>
+                    <li>
+                        <p class="question">Размер массива</p>
+                        <img src="array/len.png" alt="">
+                    </li>
+                    <hr>
+                    <li>
+                        <p class="question">Перебор элементов</p>
+                        <img src="array/iteration.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="acc-head">SLICE</div>
+            <div class="acc-body">
+                <ul>
+                    <li>
+                        <p class="question">Создание слайса</p>
+                        <img src="slice/create.png" alt="">
+                    </li>
+                    <hr>
+                    <li>
+                        <p class="question">Размер слайса</p>
+                        <img src="slice/len.png" alt="">
+                    </li>
+                    <hr>
+                    <li>
+                        <p class="question">Добавить элемент</p>
+                        <img src="slice/append.png" alt="">
+                    </li>
+                    <hr>
+                    <li>
+                        <p class="question">Удалить элемент</p>
+                        <img src="slice/remove_element.png" alt="">
+                    </li>
+                    <hr>
+                    <li>
+                        <p class="question">Перебор элементов</p>
+                        <img src="slice/iteration.png" alt="">
+                    </li>
+                    <hr>
+                    <li>
+                        <p class="question">Многомерный слайс</p>
+                        <img src="slice/multi_dimensional.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="acc-head">MAP</div>
+            <div class="acc-body">
+                <ul>
+                    <li>
+                        <p class="question">CREATION</p>
+                        <img src="map/create.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">EXISTANCE</p>
+                        <img src="map/exists.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">REMOVAL</p>
+                        <img src="map/delete.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">SORT</p>
+                        <img src="map/sort.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">ITERATION</p>
+                        <img src="map/iteration.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">LENGTH</p>
+                        <img src="map/iteration.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="acc-head">CHAN</div>
+            <div class="acc-body">
+                <ul>
+                    <li>
+                        <p class="question">Create1</p>
+                        <img src="chan/img.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">Create2</p>
+                        <img src="chan/img_1.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">Create3</p>
+                        <img src="chan/img_2.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">Done</p>
+                        <img src="chan/done.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">timer</p>
+                        <img src="chan/timer.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">Wait</p>
+                        <img src="chan/wait.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">WaitGrout</p>
+                        <img src="chan/wait_group.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">SELECT</p>
+                        <img src="chan/select.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="acc-head" style="color: #920505">package.SORT</div>
+            <div class="acc-body">
+                <ul>
+                    <li>
+                        <p class="question">SLICE</p>
+                        <img src="sort/slice.png" alt="">
+                    </li>
+                    <li>
+                        <p class="question">STRUCT SLICE</p>
+                        <img src="sort/struct.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    $(document).ready(function () {
+        $('.accordeon .acc-head').on('click', accClick);
+        $('.accordeon .acc-body').on('click', accClick);
+    });
+
+    function accClick() {
+        $('.accordeon .acc-body').not($(this).next()).slideUp(300);
+        $(this).next().slideToggle(300);
+    }
+</script>
+</body>
+</html>
